@@ -1,5 +1,6 @@
 # Project files
 from scripts.config import config
+from scripts.FiveEToolLoader import get_5e_tool_data, prep_adventure_data, prep_5e_rules_data
 
 # Required Modules
 from fastapi import FastAPI
@@ -7,19 +8,21 @@ from langchain import hub
 from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain.pydantic_v1 import BaseModel, Field
 from langchain.tools.retriever import create_retriever_tool
-from langchain_community.document_loaders import UnstructuredMarkdownLoader
 from langchain_community.vectorstores import FAISS
 from langchain_core.messages import BaseMessage
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langserve import add_routes
 from typing import List
 
+# Get latest 5e.tools data
+# get_5e_tool_data()
+
+# Prep 5e Generals
+rules_doc = prep_5e_rules_data()
+quit()
+
 # Prep adventure data
-loader = UnstructuredMarkdownLoader("static/The_Wild_Beyond_the_Witchlight.md")
-adventure_doc = loader.load()
-text_splitter = RecursiveCharacterTextSplitter()
-adventure_docs = text_splitter.split_documents(adventure_doc)
+adventure_docs = prep_adventure_data()
 
 # Instantiate embedding model and vector store
 embeddings = OpenAIEmbeddings(api_key=config.get("openai").get("api_key"))
@@ -34,6 +37,7 @@ adventure_search_tool = create_retriever_tool(
     name="search_in_adventure_doc",
     description="When you need to search for information about the \"Wilds Beyond the Witchlight\" DnD adventure use this tool."
 )
+
 toolbelt = [adventure_search_tool]
 
 # Get prepped system template
