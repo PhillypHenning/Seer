@@ -1,5 +1,6 @@
 from scripts.config import config
-from scripts.FiveEToolLoader import get_5e_tool_data, prep_adventure_data, prep_5e_rules_data
+from scripts._5etools_loader import get_5e_tool_data
+from scripts.toolbelt_loader import create_adventurer_toolbelt
 from scripts.system_template import load_default_system_persona
 
 from fastapi import FastAPI
@@ -14,14 +15,7 @@ from typing import List
 # Get latest 5e.tools data
 get_5e_tool_data()
 
-# Prep 5e Generals
-rules_search_tool = prep_5e_rules_data()
-
-# Prep adventure data
-adventure_search_tool = prep_adventure_data()
-
-# Create toolbelt
-toolbelt = rules_search_tool + [adventure_search_tool]
+toolbelt = create_adventurer_toolbelt()
 
 # Get prepped system template
 system_template = load_default_system_persona()

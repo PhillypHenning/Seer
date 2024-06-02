@@ -7,3 +7,14 @@ openai:
 
 5etools:
   load_on_startup: False
+
+toolbelt:
+  rules: 
+    enable: True
+  adventure: 
+    enable: True
+  notes:
+    enable: True
+    location: "path/to/dm_notes"
+    type: "UnstructuredMarkdown" # Currently we support: UnstructuredMarkdown
+    format_description: "The game is run in arcs similar to an Anime. Arc 1 was set in the Witchlight Carnival, the rest of the arcs will be set in Prismeer. The session notes have the following important tags: [UPCOMING_SESSION] means the session hasn't been run yet. [DONE_SESSION] means the session has been completed. [IN_PROGRESS_SESSION] means the session is in progress. Additionally sessions have 'beats' which keep track of upcoming story beast the DM will use during the game. Beats have the tags: [OPENING] which is the session opening scene. [RP] which represent RP heavy encounters, [ENCOUNTER] which are generalized encounters, [CHARACTER] which are important encounters for specific character(s) and [STORY_BEAT] which are important story moments that push the main story forward."
