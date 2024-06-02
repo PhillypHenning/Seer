@@ -7,9 +7,6 @@ langchainhub==0.1.17
 langserve==0.2.1
 
 pyconfman2==0.1.10
-
 GitPython==3.1.43
-
 fastapi==0.111.0
-
 jq==1.7.0
