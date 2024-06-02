@@ -1,1 +1,22 @@
 # Seer
+Seer is a Dungeon Master tool to help DMs and players quickly find information about rules, stats, adventure details and information on hosted games.
+
+# Setup
+At minimum you will need an [OpenAI api key](https://platform.openai.com/api-keys)
+If you want traceability you'll want to set up a [LangSmith account](https://smith.langchain.com/) and generate an api key
+
+Keeps things clean with a virtual environment
+```bash
+python -m venv local
+```
+
+## Install
+```bash
+python -m pip install -r requirements.txt`
+```
+
+# Usage
+```bash
+source local/bin/activate
+./_scripts/start.sh
+```
