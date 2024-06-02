@@ -1,6 +1,7 @@
 # PROJECT
 local_config.yml
 local/
+static/
 
 # PYTHON GITIGNORE TEMPLATE
 # Byte-compiled / optimized / DLL files

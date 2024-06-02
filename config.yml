@@ -1,0 +1,12 @@
+langchain:
+  api_key: "lsv2_pt_xxxxx"
+  tracing: True
+
+openai:
+  api_key: "sk-proj-xxxx"
+
+travily:
+  api_key: "tvly-xxxxx"
+
+5etools:
+  load_on_startup: False
