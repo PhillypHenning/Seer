@@ -18,7 +18,8 @@ get_5e_tool_data()
 toolbelt = create_adventurer_toolbelt()
 
 # Get prepped system template
-system_template = load_default_system_persona()
+# system_template = load_default_system_persona()
+system_template = hub.pull("hwchase17/openai-functions-agent")
 
 # Instantiate LLM and AI agent
 llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=config.get("openai").get("api_key"))

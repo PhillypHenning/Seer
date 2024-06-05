@@ -1,11 +1,14 @@
 from scripts.config import config
 from scripts.data_loaders import load_multifile_unstruct_markdown, load_multifile_jsondata, load_data_jsonfile
 from langchain.tools.retriever import create_retriever_tool
-from langchain_openai import OpenAIEmbeddings
+# from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
 
 # Instantiate embedding model and vector store
-embeddings = OpenAIEmbeddings(api_key=config.get("openai").get("api_key"))
+# embeddings = OpenAIEmbeddings(api_key=config.get("openai").get("api_key"))
+# https://medium.com/@alekseyrubtsov/local-embedding-done-right-5a8bf129ec42
+embeddings = OllamaEmbeddings(model="llama3")
 
 def create_adventurer_toolbelt():
     toolbelt = []
@@ -25,7 +28,7 @@ def create_adventurer_toolbelt():
             # Create tool for DM Notes
             dm_data = prep_dm_data()
             if dm_data:
-                    toolbelt += dm_data
+                toolbelt += dm_data
 
     return toolbelt
 
@@ -56,6 +59,7 @@ Unable to load DM Data.""")
 def prep_adventure_data():
     print("Loading Adventure data")
     docs = load_data_jsonfile("static/adventure/adventure-wbtw.json", ".data")
+    print(f"docs len: {len(docs)}")
     vector = FAISS.from_documents(docs, embeddings)
     retriever = vector.as_retriever()
     adventure_search_tool = create_retriever_tool(
