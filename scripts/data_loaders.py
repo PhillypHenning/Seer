@@ -4,7 +4,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from scripts.utilities import merge_json_files
 
 
-text_splitter = RecursiveCharacterTextSplitter()
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 
 
 def load_multifile_jsondata(folder_path, jq_schema):

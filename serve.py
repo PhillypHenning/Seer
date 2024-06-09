@@ -1,7 +1,7 @@
 from scripts.config import config
-from scripts._5etools_loader import get_5e_tool_data
 from scripts.toolbelt_loader import create_adventurer_toolbelt
 from scripts.system_template import load_default_system_persona
+from scripts.utilities import validate_and_create_paths, prep_local_setup
 
 from fastapi import FastAPI
 from langchain import hub
@@ -12,8 +12,9 @@ from langchain_openai import ChatOpenAI
 from langserve import add_routes
 from typing import List
 
-# Get latest 5e.tools data
-get_5e_tool_data()
+
+# Prep local
+prep_local_setup()
 
 toolbelt = create_adventurer_toolbelt()
 
