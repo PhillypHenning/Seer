@@ -1,5 +1,5 @@
 # PROJECT
-local_config.yml
+config.yml
 local/
 static/
 
